@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animation for top navbar */
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation for content blocks from left */
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation for content blocks from right */
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-top {
+            animation: slideInFromTop 1s ease-out forwards;
+        }
+        
+        .animate-left {
+            animation: slideInFromLeft 1s ease-out forwards;
+        }
+
+        .animate-right {
+            animation: slideInFromRight 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#f3f4f6] flex flex-col items-center min-h-screen p-4">
+
+    <!-- Navbar -->
+    <nav class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top">
+        <!-- Logo and Slogan -->
+        <div class="flex-shrink-0 text-center md:text-left pl-4">
+            <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
+            <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
+            <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
+            <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SERVICES</a>
+            <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PORTFOLIO</a>
+            <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT</a>
+        </div>
+
+        <!-- More Options Icon (for mobile) -->
+        <div class="md:hidden">
+            <button class="bg-gray-200 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-7xl mt-8">
+
+        <!-- Social Media Blocks -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- GitHub Block (from left) -->
+            <a href="https://github.com/Hm-Mujahid" target="_blank" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-left" style="animation-delay: 0.2s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#333] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.11.82-.26.82-.584 0-.29-.01-1.05-.015-2.05-.333.093-.815-.226-.98-.485-2.34-1.571-2.09-2.008-2.09-2.008-1.558-3.961-.715-3.003-.715-3.003-1.378-2.76.098-2.695.098-2.695 1.523.109 2.329 1.553 2.329 1.553 1.353 2.327 3.55 1.656 4.417 1.261.137-.978.536-1.656.974-2.039-3.37-.384-6.89-1.688-6.89-7.504 0-1.662.593-3.023 1.55-4.085-.157-.384-.67-1.933.15-4.028 0 0 1.268-.406 4.152 1.547 1.205-.335 2.49-.502 3.77-.508 1.28.006 2.565.173 3.77.508 2.883-1.953 4.15-1.547 4.15-1.547.82 2.095.307 3.644.15 4.028.956 1.062 1.549 2.423 1.549 4.085 0 5.826-3.52 7.117-6.897 7.504.55.474.96.113.96 1.13v1.685c0 .324.21.695.826.58A11.96 11.96 0 0 0 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">GitHub</span>
+                </div>
+            </a>
+
+            <!-- LinkedIn Block (from left) -->
+            <a href="https://linkedin.com/in/hm-mujahid-pasha-70298b374" target="_blank" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-left" style="animation-delay: 0.4s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#0077b5] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.761 0-.971.784-1.76 1.75-1.76s1.75.789 1.75 1.76c0 .971-.784 1.761-1.75 1.761zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">LinkedIn</span>
+                </div>
+            </a>
+            
+            <!-- Email Block (from left) -->
+            <a href="mailto:hmmujahidpasha@gmail.com" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-left" style="animation-delay: 0.6s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#D44638] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">Email</span>
+                </div>
+            </a>
+
+            <!-- Twitter Block (from right) -->
+            <a href="https://twitter.com/Pasha317929060" target="_blank" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-right" style="animation-delay: 0.8s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#1DA1F2] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.594 0-6.491 2.907-6.491 6.491 0 .509.058 1.006.163 1.488-5.39-.27-10.168-2.868-13.385-6.793-.56.966-.88 2.085-.88 3.298 0 2.275 1.157 4.288 2.915 5.464-.537-.017-1.045-.165-1.928-.535v.081c0 3.15 2.29 5.768 5.348 6.362-.519.139-1.066.216-1.637.216-.4 0-.79-.036-1.169-.112.857 2.658 3.322 4.585 6.275 4.636-2.28 1.785-5.186 2.846-8.349 2.846-.543 0-1.07-.03-1.59-.092.836 2.918 3.444 4.981 6.435 4.981 7.72 0 11.93-6.497 11.93-12.185 0-.186-.005-.372-.012-.556.816-.583 1.527-1.314 2.094-2.146z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">Twitter</span>
+                </div>
+            </a>
+
+            <!-- Instagram Block (from right) -->
+            <a href="https://instagram.com/mujahid_pasha5647" target="_blank" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-right" style="animation-delay: 1.0s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#E1306C] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.675 1.682 4.896 4.902.062 1.266.07 1.646.07 4.85 0 3.204-.012 3.584-.07 4.85-.148 3.252-1.682 4.675-4.902 4.896-1.266.062-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.675-1.682-4.896-4.902-.062-1.266-.07-1.646-.07-4.85 0-3.204.012-3.584.07-4.85.148-3.252 1.682-4.675 4.902-4.896 1.266-.062 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.21-6.78 2.618-7.002 6.985-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.21 4.358 2.618 6.78 6.985 7.002 1.28.057 1.688.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.211 6.78-2.618 6.98-6.985.06-1.28.072-1.688.072-4.948 0-3.259-.012-3.668-.069-4.948-.2-4.354-2.617-6.78-6.979-7.002-1.281-.058-1.69-.072-4.949-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">Instagram</span>
+                </div>
+            </a>
+            
+            <!-- Facebook Block (from right) -->
+            <a href="https://facebook.com/yourprofile" target="_blank" class="bg-white rounded-2xl shadow-lg p-8 flex items-center justify-center transition-transform transform hover:scale-105 duration-300 h-48 opacity-0 animate-right" style="animation-delay: 1.2s;">
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#3b5998] mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.964c0-1.082.08-1.964 1.964-1.964h2.036v-3.486h-2.632c-3.193 0-4.368 1.436-4.368 4.156v2.308z"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-gray-700">Facebook</span>
+                </div>
+            </a>
+            
+        </div>
+    </main>
+</body>
+</html>

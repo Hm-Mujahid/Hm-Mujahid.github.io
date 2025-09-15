@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animation for top navbar */
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation for content blocks from left */
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation for content blocks from right */
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* General fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animate-top {
+            animation: slideInFromTop 1s ease-out forwards;
+        }
+        
+        .animate-left {
+            animation: slideInFromLeft 1s ease-out forwards;
+        }
+
+        .animate-right {
+            animation: slideInFromRight 1s ease-out forwards;
+        }
+
+        .animate-fade {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Custom style for the visualizer */
+        .visualizer-container {
+            background-color: #4a5568; /* Dark gray background */
+            position: relative;
+            display: flex;
+            align-items: flex-end; /* Align bars to the bottom */
+            justify-content: space-around;
+            padding: 1rem;
+            min-height: 300px;
+            border-radius: 1rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .bar {
+            width: 10%;
+            background-color: #63b3ed; /* A nice blue color for the bars */
+            margin: 0 0.25rem;
+            transition: height 0.5s ease-in-out;
+            border-radius: 0.25rem;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-[#f3f4f6] flex flex-col items-center min-h-screen p-4">
+
+    <!-- Navbar -->
+    <nav class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top">
+        <!-- Logo and Slogan -->
+        <div class="flex-shrink-0 text-center md:text-left pl-4">
+            <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
+            <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
+            <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
+            <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
+            <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PROJECTS</a>
+            <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT ME</a>
+        </div>
+
+        <!-- More Options Icon (for mobile) -->
+        <div class="md:hidden">
+            <button class="bg-gray-200 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-7xl mt-8">
+        <!-- Projects Grid Section -->
+        <div id="projects-grid-section" class="projects-section">
+            <h2 class="playfair text-4xl font-bold text-center text-[#8B4513] mb-8 opacity-0 animate-top" style="animation-delay: 0.2s;">My Projects</h2>
+            <!-- 
+                This grid is designed to be responsive. 
+                - On mobile (default), it's a single column (grid-cols-1).
+                - On small screens (sm), it switches to 2 columns (sm:grid-cols-2).
+                - On large screens (lg), it switches to 3 columns (lg:grid-cols-3), preserving the desktop layout.
+            -->
+            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project cards will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Project Detail Section (initially hidden) -->
+        <div id="project-detail-section" class="projects-section hidden p-4 md:p-8">
+            <!-- Back Button -->
+            <button id="back-button" class="flex items-center text-gray-600 hover:text-[#8B4513] mb-8 transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                Back to Projects
+            </button>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 opacity-0 animate-fade" style="animation-delay: 0.2s;">
+                <!-- Left Column: Visualizer -->
+                <div class="visualizer-container">
+                    <!-- Bars will be generated by JavaScript -->
+                </div>
+                <!-- Right Column: Project Details -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+                    <h2 id="project-title" class="playfair text-4xl font-bold text-gray-800 mb-4"></h2>
+                    <p id="project-description" class="text-gray-600 mb-6 flex-grow"></p>
+                    <div id="project-tags" class="flex flex-wrap gap-2 mb-4">
+                        <!-- Tags will be generated by JavaScript -->
+                    </div>
+                     <a href="#" class="w-full text-center bg-[#8B4513] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#A0522D] transition-colors duration-200">
+                        Click Here
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const projectsData = [
+            {
+                id: 'website-redesign',
+                title: 'ChessVision – Puzzle Solver',
+                description: 'A machine learning system to recognize chess puzzles from images and solve them automatically using image-to-FEN conversion and chess engine integration.',
+                tags: ['Python', 'OpenCv', 'TenserFlow', 'Chess Engine'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Website+Redesign'
+            },
+            {
+                id: 'interactive-data-tool',
+                title: 'CubeAI – Rubik’s Solver',
+                description: 'Developed an ML-powered tool to analyze Rubik’s Cube faces from images and compute optimal solving steps using state recognition and Kociemba’s algorithm.',
+                tags: ['python', 'OpenCv', 'Deep Learning','Kociemba Algorithm'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Data+Tool'
+            },
+            {
+                id: 'ecommerce-platform',
+                title: 'AirCursor – Finger Tracking Mouse',
+                description: 'An AI-powered vision system that lets users control the mouse pointer with hand gestures, enabling touchless interaction with computers.',
+                tags: ['Python', 'OpenCv', 'MediaPipe'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=E-commerce+App'
+            },
+            {
+                id: 'travel-app-concept',
+                title: 'FineTrack – College Dues Manager',
+                description: 'A web app to calculate fines per class and generate hall tickets for students. Automates fine aggregation and simplifies ticket printing for administration.',
+                tags: ['HTML', 'CSS', 'JavaScript','MySQL'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Travel+App'
+            },
+            {
+                id: 'blog-content-engine',
+                title: 'MedAssist – Home Care Service',
+                description: 'A mobile platform to connect nursing students with patients for minor home treatments, offering scheduling, booking, and patient record management.',
+                tags: ['Flutter', 'Firebase', 'Node.js'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Blog+Engine'
+            },
+            {
+                id: 'copywriting-for-saas',
+                title: 'Copywriting for SaaS',
+                description: 'A collection of landing page copy, email campaigns, and marketing materials created for a leading B2B SaaS company.',
+                tags: ['Copywriting', 'SaaS', 'Marketing'],
+                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=SaaS+Copy'
+            },
+        ];
+
+        const projectsGrid = document.getElementById('projects-grid');
+        const projectsGridSection = document.getElementById('projects-grid-section');
+        const projectDetailSection = document.getElementById('project-detail-section');
+        const backButton = document.getElementById('back-button');
+
+        const projectTitle = document.getElementById('project-title');
+        const projectDescription = document.getElementById('project-description');
+        const projectTags = document.getElementById('project-tags');
+        const visualizerContainer = document.querySelector('.visualizer-container');
+
+        // Function to render the project cards
+        function renderProjectCards() {
+            projectsGrid.innerHTML = ''; // Clear existing content
+            projectsData.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                const animationClass = index % 2 === 0 ? 'animate-left' : 'animate-right';
+                const delay = (index * 0.2 + 0.6).toFixed(1);
+                
+                projectCard.className = `bg-white rounded-2xl shadow-lg p-8 h-80 flex flex-col justify-center opacity-0 ${animationClass}`;
+                projectCard.style.animationDelay = `${delay}s`;
+                
+                projectCard.innerHTML = `
+                    <h3 class="text-2xl font-bold text-gray-800 playfair mb-2">${project.title}</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
+                    <div class="flex items-center space-x-4">
+                        <button class="view-project-btn text-[#8B4513] font-semibold hover:underline" data-project-id="${project.id}">View Project &rarr;</button>
+                        <a href="#" class="text-gray-600 hover:text-[#8B4513] transition-colors duration-200">
+                            <!-- GitHub SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387 0.599 0.111 0.793-0.261 0.793-0.577 0-0.285-0.01-1.040-0.015-2.040-3.338 0.724-4.042-1.61-4.042-1.61-0.542-1.355-1.326-1.72-1.326-1.72-1.087-0.744 0.084-0.729 0.084-0.729 1.205 0.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.492 0.998 0.108-0.776 0.418-1.305 0.762-1.605-2.665-0.304-5.467-1.334-5.467-5.931 0-1.311 0.469-2.381 1.236-3.221-0.124-0.304-0.537-1.516 0.117-3.176 0 0 1.008-0.322 3.301 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.020 0.005 2.047 0.138 3.006 0.404 2.291-1.552 3.297-1.23 3.297-1.23 0.655 1.660 0.242 2.872 0.118 3.176 0.77 0.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923 0.435 0.372 0.817 1.107 0.817 2.228 0 1.606-0.015 2.897-0.015 3.286 0 0.315 0.192 0.694 0.801 0.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Function to show project details
+        function showProjectDetails(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            // Hide the projects grid and show the detail section
+            projectsGridSection.classList.add('hidden');
+            projectDetailSection.classList.remove('hidden');
+
+            // Populate the detail view with the selected project's data
+            projectTitle.textContent = project.title;
+            projectDescription.textContent = project.description;
+            
+            // Generate tags
+            projectTags.innerHTML = '';
+            project.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'bg-[#F0F0F0] text-gray-700 text-sm font-medium px-4 py-2 rounded-full';
+                tagSpan.textContent = tag;
+                projectTags.appendChild(tagSpan);
+            });
+
+            // Generate visualizer bars (example only)
+            visualizerContainer.innerHTML = '';
+            for (let i = 0; i < 10; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = `${Math.floor(Math.random() * 80) + 20}%`;
+                visualizerContainer.appendChild(bar);
+            }
+        }
+
+        // Event listener for "View Project" buttons
+        projectsGrid.addEventListener('click', (e) => {
+            if (e.target.classList.contains('view-project-btn')) {
+                const projectId = e.target.dataset.projectId;
+                showProjectDetails(projectId);
+            }
+        });
+
+        // Event listener for "Back to Projects" button
+        backButton.addEventListener('click', () => {
+            projectsGridSection.classList.remove('hidden');
+            projectDetailSection.classList.add('hidden');
+        });
+
+        // Initial render of the project cards on page load
+        document.addEventListener('DOMContentLoaded', renderProjectCards);
+    </script>
+</body>
+</html>
