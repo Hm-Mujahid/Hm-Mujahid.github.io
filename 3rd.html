@@ -99,6 +99,7 @@
             transition: height 0.5s ease-in-out;
             border-radius: 0.25rem;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            position: relative;
         }
     </style>
 </head>
@@ -122,13 +123,21 @@
 
         <!-- More Options Icon (for mobile) -->
         <div class="md:hidden">
-            <button class="bg-gray-200 p-2 rounded-full">
+            <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Links (Initially hidden) -->
+    <div id="mobile-menu" class="hidden bg-white w-full max-w-7xl rounded-b-2xl shadow-lg mt-2 p-4 md:hidden">
+        <a href="index.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">ABOUT ME</a>
+        <a href="2nd.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">SKILLS</a>
+        <a href="#My Projects" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">PROJECTS</a>
+        <a href="4th.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">CONTACT ME</a>
+    </div>
 
     <!-- Main Content Container -->
     <main class="w-full max-w-7xl mt-8">
@@ -178,35 +187,35 @@
     <script>
         const projectsData = [
             {
-                id: 'website-redesign',
+                id: 'chess-vision',
                 title: 'ChessVision – Puzzle Solver',
                 description: 'A machine learning system to recognize chess puzzles from images and solve them automatically using image-to-FEN conversion and chess engine integration.',
-                tags: ['Python', 'OpenCv', 'TenserFlow', 'Chess Engine'],
+                tags: ['Python', 'OpenCV', 'TensorFlow', 'Chess Engine'],
                 image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Website+Redesign'
             },
             {
-                id: 'interactive-data-tool',
+                id: 'cube-ai',
                 title: 'CubeAI – Rubik’s Solver',
                 description: 'Developed an ML-powered tool to analyze Rubik’s Cube faces from images and compute optimal solving steps using state recognition and Kociemba’s algorithm.',
-                tags: ['python', 'OpenCv', 'Deep Learning','Kociemba Algorithm'],
+                tags: ['Python', 'OpenCV', 'Deep Learning','Kociemba Algorithm'],
                 image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Data+Tool'
             },
             {
-                id: 'ecommerce-platform',
+                id: 'air-cursor',
                 title: 'AirCursor – Finger Tracking Mouse',
                 description: 'An AI-powered vision system that lets users control the mouse pointer with hand gestures, enabling touchless interaction with computers.',
-                tags: ['Python', 'OpenCv', 'MediaPipe'],
+                tags: ['Python', 'OpenCV', 'MediaPipe'],
                 image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=E-commerce+App'
             },
             {
-                id: 'travel-app-concept',
+                id: 'finetrack',
                 title: 'FineTrack – College Dues Manager',
                 description: 'A web app to calculate fines per class and generate hall tickets for students. Automates fine aggregation and simplifies ticket printing for administration.',
                 tags: ['HTML', 'CSS', 'JavaScript','MySQL'],
                 image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Travel+App'
             },
             {
-                id: 'blog-content-engine',
+                id: 'medassist',
                 title: 'MedAssist – Home Care Service',
                 description: 'A mobile platform to connect nursing students with patients for minor home treatments, offering scheduling, booking, and patient record management.',
                 tags: ['Flutter', 'Firebase', 'Node.js'],
@@ -231,6 +240,10 @@
         const projectTags = document.getElementById('project-tags');
         const visualizerContainer = document.querySelector('.visualizer-container');
 
+        // New elements for mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
         // Function to render the project cards
         function renderProjectCards() {
             projectsGrid.innerHTML = ''; // Clear existing content
@@ -247,7 +260,7 @@
                     <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
                     <div class="flex items-center space-x-4">
                         <button class="view-project-btn text-[#8B4513] font-semibold hover:underline" data-project-id="${project.id}">View Project &rarr;</button>
-                        <a href="#" class="text-gray-600 hover:text-[#8B4513] transition-colors duration-200">
+                        <a href="https://github.com/mujahid" class="text-gray-600 hover:text-[#8B4513] transition-colors duration-200">
                             <!-- GitHub SVG Icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387 0.599 0.111 0.793-0.261 0.793-0.577 0-0.285-0.01-1.040-0.015-2.040-3.338 0.724-4.042-1.61-4.042-1.61-0.542-1.355-1.326-1.72-1.326-1.72-1.087-0.744 0.084-0.729 0.084-0.729 1.205 0.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.492 0.998 0.108-0.776 0.418-1.305 0.762-1.605-2.665-0.304-5.467-1.334-5.467-5.931 0-1.311 0.469-2.381 1.236-3.221-0.124-0.304-0.537-1.516 0.117-3.176 0 0 1.008-0.322 3.301 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.020 0.005 2.047 0.138 3.006 0.404 2.291-1.552 3.297-1.23 3.297-1.23 0.655 1.660 0.242 2.872 0.118 3.176 0.77 0.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923 0.435 0.372 0.817 1.107 0.817 2.228 0 1.606-0.015 2.897-0.015 3.286 0 0.315 0.192 0.694 0.801 0.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -281,14 +294,19 @@
                 projectTags.appendChild(tagSpan);
             });
 
-            // Generate visualizer bars (example only)
+            // Generate a data-driven visualizer based on the project tags
             visualizerContainer.innerHTML = '';
-            for (let i = 0; i < 10; i++) {
+            project.tags.forEach(tag => {
                 const bar = document.createElement('div');
                 bar.className = 'bar';
-                bar.style.height = `${Math.floor(Math.random() * 80) + 20}%`;
+                // Calculate height based on tag length for a dynamic visualizer
+                const barHeight = 20 + tag.length * 2; // Base height + 2% per character
+                bar.style.height = `${Math.min(100, barHeight)}%`; // Cap at 100%
+                bar.style.flexGrow = '1';
+                bar.style.margin = '0 0.5rem';
+
                 visualizerContainer.appendChild(bar);
-            }
+            });
         }
 
         // Event listener for "View Project" buttons
@@ -303,6 +321,11 @@
         backButton.addEventListener('click', () => {
             projectsGridSection.classList.remove('hidden');
             projectDetailSection.classList.add('hidden');
+        });
+
+        // Event listener for the mobile menu button
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Initial render of the project cards on page load

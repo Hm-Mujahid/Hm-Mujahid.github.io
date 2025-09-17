@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
-        
+       
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
@@ -56,7 +56,7 @@
         .animate-top {
             animation: slideInFromTop 1s ease-out forwards;
         }
-        
+       
         .animate-left {
             animation: slideInFromLeft 1s ease-out forwards;
         }
@@ -70,33 +70,36 @@
 
     <!-- Navbar -->
     <nav class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top">
-        <!-- Logo and Slogan -->
-        <div class="flex-shrink-0 text-center md:text-left pl-4">
-            <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
-            <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
+        <!-- Logo and Slogan, and Mobile Button Container -->
+        <div class="flex flex-row justify-between w-full md:w-auto items-center">
+            <!-- Logo and Slogan -->
+            <div class="flex-shrink-0 text-center md:text-left pl-4">
+                <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
+                <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
+            </div>
+
+            <!-- More Options Icon (for mobile) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <!-- Navigation Links -->
-        <div class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
-            <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
+        <!-- Navigation Links Container -->
+        <div id="nav-links" class="hidden md:flex flex-col md:flex-row flex-1 justify-end space-y-4 md:space-y-0 space-x-0 md:space-x-8 lg:space-x-12 pr-4 mt-4 md:mt-0 items-center md:items-start">
+            <a href="#about me" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
             <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
             <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PROJECTS</a>
             <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT ME</a>
-        </div>
-
-        <!-- More Options Icon (for mobile) -->
-        <div class="md:hidden">
-            <button class="bg-gray-200 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
         </div>
     </nav>
 
     <!-- Main Content Area -->
     <main class="w-full max-w-7xl flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 mt-8 flex-1">
-        
+       
         <!-- Left Side Profile Card -->
         <div class="bg-white rounded-2xl shadow-lg p-8 w-full md:w-1/3 flex flex-col items-center text-center animate-left">
             <div class="w-40 h-40 rounded-full overflow-hidden mb-4">
@@ -104,7 +107,7 @@
             </div>
             <h2 class="playfair text-4xl font-bold text-[#333] mt-2">Mujahid Pasha<span class="text-base font-normal text-gray-500">(he/him)</span></h2>
             <p class="text-sm uppercase tracking-wide text-gray-500 mt-1">ML Engineer</p>
-            <button type="button" onclick="window.location.href='mailto:hmmujahidpasha@example.com'" class="mt-8 bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Email me</button>
+            <a href="mailto:hmmujahidpasha@example.com" class="mt-8 bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Email me</a>
             <div class="flex space-x-4 mt-6 text-2xl text-gray-600">
                 <a href="https://instagram.com/mujahid_pasha5647" class="hover:text-[#8B4513] transition-colors duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.772 1.691 4.914 4.914c.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.142 3.223-1.662 4.772-4.914 4.914c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.254-.142-4.771-1.691-4.919-4.914c-.056-1.265-.07-1.646-.07-4.85s.014-3.584.072-4.85c.148-3.222 1.663-4.771 4.919-4.919c1.265-.057 1.646-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072c-4.358.2-6.78 2.618-6.98 6.98c-.059 1.281-.073 1.689-.073 4.948s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98c1.281.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98c.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98c-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324a6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8a4 4 0 010 8zm6.5-11.75a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
@@ -128,14 +131,43 @@
         <div class="bg-white rounded-2xl shadow-lg p-12 w-full md:w-2/3 animate-right flex flex-col flex-1">
             <h2 class="playfair text-4xl font-bold text-[#333] mb-4">About Me</h2>
             <p class="text-base text-gray-700 leading-relaxed">I am a tech-savvy individual with a Bachelor's degree in Computer Science specializing in Artificial Intelligence,
-                 seeking employment as an AI/ML Engineer or Data Analyst. My strong foundation in data science is built upon my skills in Python, NumPy, and Pandas, as well as
-                  my knowledge of supervised learning. I have also gained practical experience with DSA and databases like SQL and NoSQL. I am dedicated to applying my technical
-                   skills to solve complex problems and contribute to innovative projects in the field of AI and data analysis.</p>
+                    seeking employment as an AI/ML Engineer or Data Analyst. My strong foundation in data science is built upon my skills in Python, NumPy, and Pandas, as well as
+                    my knowledge of supervised learning. I have also gained practical experience with DSA and databases like SQL and NoSQL. I am dedicated to applying my technical
+                    skills to solve complex problems and contribute to innovative projects in the field of AI and data analysis.</p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-                <button type="button" onclick="window.location.href='https://bit.ly/46nH8Cc'" class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Resume</button>
-                <button class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Portfolio</button>
+                <a href="https://bit.ly/4moetD7" class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Resume</a>
+                <a href="#" class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-gray-700 transition-colors duration-200">Portfolio</a>
             </div>
         </div>
     </main>
 </body>
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const navLinks = document.getElementById('nav-links');
+
+    // Toggles the visibility of the navigation links on mobile
+    mobileMenuButton.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+        navLinks.classList.toggle('flex');
+    });
+
+    // Ensures the menu hides when the window is resized back to desktop size
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            navLinks.classList.add('hidden');
+            navLinks.classList.remove('flex');
+        }
+    });
+
+    // Optional: Hide the menu after a link is clicked
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                navLinks.classList.add('hidden');
+                navLinks.classList.remove('flex');
+            }
+        });
+    });
+</script>
 </html>

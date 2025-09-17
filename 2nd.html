@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
@@ -23,12 +23,12 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
-        /* Custom SVG icon styles for hover effects */
-        .icon-container svg {
+        /* Custom IMG icon styles for hover effects */
+        .icon-container img {
             transition: transform 0.3s ease-in-out;
         }
 
-        .icon-container:hover svg {
+        .icon-container:hover img {
             transform: scale(1.1);
         }
 
@@ -43,7 +43,7 @@
                 opacity: 1;
             }
         }
-        
+
         /* New keyframes for sliding animations */
         @keyframes slideInFromLeft {
             0% {
@@ -92,17 +92,18 @@
             <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Skills & Experience</p>
         </div>
 
-        <!-- Navigation Links -->
-        <div class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
+        <!-- Navigation Links (Hidden on mobile by default) -->
+        <div id="nav-links" class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
+            <!-- Corrected links to scroll to sections -->
             <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
-            <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
+            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
             <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PROJECTS</a>
             <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT ME</a>
         </div>
 
         <!-- More Options Icon (for mobile) -->
         <div class="md:hidden">
-            <button class="bg-gray-200 p-2 rounded-full">
+            <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
@@ -112,99 +113,96 @@
     <!-- End Header / Navbar -->
 
     <!-- Main application container -->
-    <div id="app-container"
-        class="bg-white rounded-xl shadow-custom p-6 w-full max-w-7xl min-h-[90vh] overflow-y-auto mt-8">
+    <div id="app-container" class="bg-white rounded-xl shadow-custom p-6 w-full max-w-7xl min-h-[90vh] overflow-y-auto mt-8">
 
         <!-- Main content sections -->
         <main class="space-y-12">
 
             <!-- Skills Section: Animates in from the left with a 0.5s delay. -->
-            <section class="animate-left opacity-0" style="animation-delay: 0.5s;">
+            <section id="skills" class="animate-left opacity-0" style="animation-delay: 0.5s;">
                 <h2 class="playfair text-4xl font-bold mb-6">Skills</h2>
                 <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm overflow-x-auto">
                     <div class="grid grid-flow-col grid-rows-2 gap-x-12 gap-y-8 w-max">
                         
-                        <!-- Python & AI -->
+                        <!-- Python & C -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1c4.97 0 9 4.03 9 9 0 2.296-.86 4.38-2.26 6.002L12 13.97l-6.74 2.032C4.38 14.38 3 12.296 3 10c0-4.97 4.03-9 9-9zm0 22c-4.97 0-9-4.03-9-9 0-2.296.86-4.38 2.26-6.002L12 10.03l6.74-2.032C19.62 9.62 21 11.704 21 14c0 4.97-4.03 9-9 9z"/></svg>
+                            <img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">Python</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15h3V8h-3v9zm1.5-13.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">AI / ML</span>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">C</span>
                         </div>
 
-                        <!-- C & C++ -->
+                        <!-- Matplotlib & Pandas -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-4h-4V9h6V7h-6V5h6V3h2v14zm-4 0h2v-4h4V9h-6v8zm-2-9v-2h-2v2h2zm-2 0H5v2h2v-2z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">C/C++</span>
-                        </div>
-
-                        <!-- DSA & SQL -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">DSA</span>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">Matplotlib</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">SQL</span>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">Pandas</span>
+                        </div>
+                        
+                        <!-- MongoDB & Git -->
+                        <div class="flex flex-col items-center space-y-2 icon-container">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">MongoDB</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 icon-container">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">Git</span>
                         </div>
                         
                         <!-- HTML & CSS -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://www.svgrepo.com/show/452228/html-5.svg" alt="HTML Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">HTML</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://www.svgrepo.com/show/452185/css-3.svg" alt="CSS Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">CSS</span>
                         </div>
 
-                        <!-- JS & React.js -->
+                        <!-- JavaScript & React.js -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">JavaScript</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">React.js</span>
                         </div>
 
                         <!-- OpenCV & NumPy -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">OpenCV</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy Icon" class="h-16 w-16">
                             <span class="text-sm font-semibold text-gray-700">NumPy</span>
                         </div>
-                        
-                        <!-- Pandas & NoSQL -->
+
+                        <!-- Power BI & GitHub -->
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">Pandas</span>
+                            <img src="https://www.svgrepo.com/show/342111/power-bi.svg" alt="Power BI Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">Power BI</span>
                         </div>
                         <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">NoSQL</span>
-                        </div>
-                        
-                        <!-- Supervised Learning -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <svg class="h-16 w-16 text-gray-700" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
-                            <span class="text-sm font-semibold text-gray-700">Supervised Learning</span>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Icon" class="h-16 w-16">
+                            <span class="text-sm font-semibold text-gray-700">GitHub</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Education Section: Animates in from the right with a 1s delay. -->
-            <section class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 1s;">
+            <section id="education" class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 1s;">
                 <h2 class="playfair text-4xl font-bold mb-6">Education</h2>
                 <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
                     <p class="text-gray-600 mb-2">
-                        <strong>Bachelor of Science in Computer Science in Artificaial Intelligence</strong>
+                        <strong>Bachelor of Science in Computer Science in Artificial Intelligence</strong>
                     </p>
                     <p class="text-gray-500 text-sm">
                         BITM | Ballari, Karnataka | Expected Graduation: May 2027
@@ -216,35 +214,33 @@
             </section>
 
             <!-- Experience Section: Animates in from the left with a 1.5s delay. -->
-            <section class="animate-left opacity-0" style="animation-delay: 1.5s;">
+            <section id="experience" class="animate-left opacity-0" style="animation-delay: 1.5s;">
                 <h2 class="playfair text-4xl font-bold mb-6">Experience</h2>
                 <div class="bg-[#F8F9FA] border border-gray-200 rounded-lg p-6 shadow-sm">
-        
-                  <h3 class="text-xl font-semibold text-gray-800 mb-2">Financial Advisor (2023–2025)</h3>
-                  <p class="text-gray-600 mb-4">Company: <span class="font-medium">Gromo | Online Platform</span></p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Financial Advisor (2023–2025)</h3>
+                    <p class="text-gray-600 mb-4">Company: <span class="font-medium">Gromo | Online Platform</span></p>
 
-                 <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                  <li>
-                   📜 <strong>Certificate:</strong>
-                    <a href="https://bit.ly/3VQu8A9" class="text-blue-600 hover:underline">Click Here</a>
-                 </li>
-                 <li>
-                    💳 <strong>Gromo Card:</strong>
-                    <a href="https://bit.ly/4gpDVa3" class="text-blue-600 hover:underline">Click Here</a>
-                 </li>
-                 <li>
-                    ✅ <strong>Services Provided:</strong> Savings Accounts, Demat Accounts, UPI Setup, Instant Deals
-                 </li>
-                 <li>
-                    🎯 <strong>Achievements:</strong> Generated <span class="font-semibold">21 major leads</span> till date
-                 </li>
-                  </ul>
-
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>
+                            📜 <strong>Certificate:</strong>
+                            <a href="https://bit.ly/3VQu8A9" class="text-blue-600 hover:underline">Click Here</a>
+                        </li>
+                        <li>
+                            💳 <strong>Gromo Card:</strong>
+                            <a href="https://bit.ly/4gpDVa3" class="text-blue-600 hover:underline">Click Here</a>
+                        </li>
+                        <li>
+                            ✅ <strong>Services Provided:</strong> Savings Accounts, Demat Accounts, UPI Setup, Instant Deals
+                        </li>
+                        <li>
+                            🎯 <strong>Achievements:</strong> Generated <span class="font-semibold">21 major leads</span> till date
+                        </li>
+                    </ul>
                 </div>
             </section>
-            
+
             <!-- Certifications Section: Animates in from the right with a 2s delay. -->
-            <section class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 2s;">
+            <section id="certifications" class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 2s;">
                 <h2 class="playfair text-4xl font-bold mb-6">Certifications</h2>
                 <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
                     <ul class="space-y-2">
@@ -255,31 +251,88 @@
                             <a href="#" class="text-blue-600 hover:underline">2. Introduction to Artificial Intelligence - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">3. Data Structures and Algorithms - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">3.Learning for Microsoft power BI - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">4. Data Structures and Algorithms Using Java - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">4. Data Structures and Algorithms - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">5. Document and Usability for Cancer Informatics - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">5. Data Structures and Algorithms Using Java - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">6. Document and Usability for Cancer Informatics - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">6. Power BI for Business Professionals - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">7.Access Bioinformatics Databases with Biopython - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">7. Power BI Training - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">8. Introduction to Reproducibility in cancer Informatics - Infosys Springboard</a>
+                            <a href="#" class="text-blue-600 hover:underline">8. TechA Data Analytics using Power BI Foundation Certification - Infosys Springboard</a>
                         </li>
                         <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">9.>Data Sciences in Pharma - Patient Centered Outcomes Research - Coursera</a>
+                            <a href="#" class="text-blue-600 hover:underline">9. Document and Usability for Cancer Informatics - Infosys Springboard</a>
+                        </li>
+                        <li class="flex items-center">
+                            <a href="#" class="text-blue-600 hover:underline">10. Document and Usability for Cancer Informatics - Infosys Springboard</a>
+                        </li>
+                        <li class="flex items-center">
+                            <a href="#" class="text-blue-600 hover:underline">11. Access Bioinformatics Databases with Biopython - Infosys Springboard</a>
+                        </li>
+                        <li class="flex items-center">
+                            <a href="#" class="text-blue-600 hover:underline">12. Introduction to Reproducibility in cancer Informatics - Infosys Springboard</a>
+                        </li>
+                        <li class="flex items-center">
+                            <a href="#" class="text-blue-600 hover:underline">13. Data Sciences in Pharma - Patient Centered Outcomes Research - Coursera</a>
                         </li>
                     </ul>
                 </div>
             </section>
         </main>
     </div>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Get the target element by its ID from the href
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                // If the target element exists, scroll to it
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // For "ABOUT ME" link, scroll to the top of the page
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const navLinks = document.getElementById('nav-links');
+        mobileMenuButton.addEventListener('click', () => {
+            // Check if the menu is hidden
+            if (navLinks.classList.contains('hidden')) {
+                // Show the menu and apply mobile styles
+                navLinks.classList.remove('hidden');
+                navLinks.classList.add('flex', 'flex-col', 'items-center', 'space-y-4', 'p-6', 'rounded-xl', 'bg-gray-100', 'shadow-md', 'mt-4');
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.classList.add('w-full', 'text-center');
+                });
+            } else {
+                // Hide the menu and remove mobile styles
+                navLinks.classList.add('hidden');
+                navLinks.classList.remove('flex', 'flex-col', 'items-center', 'space-y-4', 'p-6', 'rounded-xl', 'bg-gray-100', 'shadow-md', 'mt-4');
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.classList.remove('w-full', 'text-center');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
