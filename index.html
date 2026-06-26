@@ -3,166 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Page</title>
+    <title>About Me | Mujahid Pasha</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-image: linear-gradient(to right bottom, #e0e7ff, #f3f4f6);
+            background-color: #f3f4f6;
+            overflow-x: hidden;
         }
 
         .playfair {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Animation for top navbar */
-        @keyframes slideInFromTop {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        /* Premium Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* Animation for left card */
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        /* Subtle Slow Floating Background Animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-25px) scale(1.05); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(30px) scale(0.95); }
+        }
+        .animate-float-1 { animation: float-slow 10s ease-in-out infinite; }
+        .animate-float-2 { animation: float-reverse 14s ease-in-out infinite; }
+
+        /* Smooth Entry Animation Rules */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Animation for right card */
-        @keyframes slideInFromRight {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-left { animation: fadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-right { animation: fadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-        .animate-top {
-            animation: slideInFromTop 1s ease-out forwards;
-        }
-        
-        .animate-left {
-            animation: slideInFromLeft 1s ease-out forwards;
-        }
-
-        .animate-right {
-            animation: slideInFromRight 1s ease-out forwards;
+        /* Elegant Subtle Shadow Glow On Hover */
+        .premium-hover:hover {
+            box-shadow: 0 20px 40px -15px rgba(139, 69, 19, 0.12), 0 0 20px 1px rgba(139, 69, 19, 0.04);
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-start min-h-screen p-4">
+<body class="relative min-h-screen flex flex-col items-center p-4 md:p-6">
 
-    <nav class="rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top"
-         style="background-image: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)), url('https://images.unsplash.com/photo-1549225895-30312aa9147e?auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
-        <div class="flex flex-row justify-between w-full md:w-auto items-center">
-            <div class="flex-shrink-0 text-center md:text-left pl-4">
-                <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
-                <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
-            </div>
+    <div class="absolute top-12 left-6 w-80 h-80 bg-[#8B4513]/5 rounded-full blur-3xl pointer-events-none animate-float-1"></div>
+    <div class="absolute bottom-16 right-6 w-96 h-96 bg-[#8B4513]/4 rounded-full blur-3xl pointer-events-none animate-float-2"></div>
 
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-            </div>
+    <nav class="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-100 p-5 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between z-10 space-y-4 md:space-y-0 animate-fade-up">
+        <div class="text-center md:text-left pl-2">
+            <h1 class="playfair text-2xl font-bold text-[#8B4513] tracking-wide">Mujahid Pasha</h1>
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Machine Learning Portfolio</p>
         </div>
-
-        <div id="nav-links" class="hidden md:flex flex-col md:flex-row flex-1 justify-end space-y-4 md:space-y-0 space-x-0 md:space-x-8 lg:space-x-12 pr-4 mt-4 md:mt-0 items-center md:items-start">
-            <a href="#about me" class="text-sm font-semibold text-gray-700 hover:text-blue-700 transition-colors duration-200">ABOUT ME</a>
-            <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-blue-700 transition-colors duration-200">SKILLS</a>
-            <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-blue-700 transition-colors duration-200">PROJECTS</a>
-            <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-blue-700 transition-colors duration-200">CONTACT ME</a>
+        <div class="hidden md:flex space-x-8 pr-2">
+            <a href="index.html" class="text-xs font-bold tracking-widest text-[#8B4513] border-b-2 border-[#8B4513] pb-1">ABOUT ME</a>
+            <a href="2nd.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">EXPERIENCE</a>
+            <a href="3rd.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">PROJECTS</a>
+            <a href="4th.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">CONTACT ME</a>
         </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
     </nav>
 
-    <main class="w-full max-w-7xl flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 mt-8 flex-1">
+    <div id="mobile-menu" class="hidden w-full max-w-7xl bg-white mt-2 rounded-xl shadow-md p-4 flex flex-col space-y-3 z-10 md:hidden animate-fade-up">
+        <a href="index.html" class="text-sm font-bold text-[#8B4513] py-1 text-center bg-gray-50 rounded-lg">ABOUT ME</a>
+        <a href="2nd.html" class="text-sm font-semibold text-gray-600 py-1 text-center">EXPERIENCE</a>
+        <a href="3rd.html" class="text-sm font-semibold text-gray-600 py-1 text-center">PROJECTS</a>
+        <a href="4th.html" class="text-sm font-semibold text-gray-600 py-1 text-center">CONTACT ME</a>
+    </div>
+
+    <main class="w-full max-w-7xl flex flex-col lg:flex-row gap-8 mt-10 z-10 flex-grow mb-12">
         
-        <div class="rounded-2xl shadow-lg p-8 w-full md:w-1/3 flex flex-col items-center text-center animate-left"
-             style="background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1549225895-30312aa9147e?auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
-            <div class="w-40 h-40 rounded-xl overflow-hidden mb-4 shadow-md">
-                <img src="https://placehold.co/160x160/EFEFEF/333333?text=Your+Image+Here" alt="Mujahid Pasha" class="w-full h-full object-cover">
+        <div class="glass-card rounded-2xl shadow-sm p-8 w-full lg:w-1/3 flex flex-col items-center text-center justify-between animate-left premium-hover transition-all duration-300">
+            <div class="flex flex-col items-center w-full">
+                <div class="w-44 h-44 rounded-2xl overflow-hidden mb-6 p-1.5 bg-gradient-to-tr from-[#8B4513]/30 to-white/10 shadow-inner">
+                    <img src="https://placehold.co/180x180/EFEFEF/333333?text=Mujahid" alt="Mujahid Pasha" class="w-full h-full object-cover rounded-xl shadow-sm">
+                </div>
+                
+                <h2 class="playfair text-3xl font-bold text-gray-900 tracking-tight">Mujahid Pasha</h2>
+                <div class="inline-flex items-center text-xs text-gray-400 font-medium mt-1 uppercase tracking-wider">
+                    <span>ML Engineer</span>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full mx-2"></span>
+                    <span>He / Him</span>
+                </div>
+
+                <div class="w-full border-t border-dashed border-gray-200/80 my-6"></div>
+
+                <div class="w-full space-y-3.5 text-left px-2">
+                    <div class="flex items-center text-xs text-gray-600 font-medium">
+                        <div class="w-7 h-7 rounded-md bg-[#8B4513]/5 text-[#8B4513] flex items-center justify-center mr-3 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <span class="truncate">Bengaluru, Karnataka, India</span>
+                    </div>
+                    <div class="flex items-center text-xs text-gray-600 font-medium">
+                        <div class="w-7 h-7 rounded-md bg-[#8B4513]/5 text-[#8B4513] flex items-center justify-center mr-3 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                        </div>
+                        <span class="truncate">B.E. Computer Science (AI)</span>
+                    </div>
+                </div>
             </div>
-            <h2 class="playfair text-4xl font-bold text-[#333] mt-2">Mujahid Pasha<span class="text-base font-normal text-gray-500">(he/him)</span></h2>
-            <p class="text-sm uppercase tracking-wide text-gray-500 mt-1">ML Engineer</p>
-            <a href="mailto:hmmujahidpasha@example.com" class="mt-8 bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-blue-800 transition-colors duration-200">Email me</a>
-            <div class="flex space-x-4 mt-6 text-2xl text-gray-600">
-                <a href="https://instagram.com/mujahid_pasha5647" class="hover:text-blue-700 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.772 1.691 4.914 4.914c.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.142 3.223-1.662 4.772-4.914 4.914c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.254-.142-4.771-1.691-4.919-4.914c-.056-1.265-.07-1.646-.07-4.85s.014-3.584.072-4.85c.148-3.222 1.663-4.771 4.919-4.919c1.265-.057 1.646-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072c-4.358.2-6.78 2.618-6.98 6.98c-.059 1.281-.073 1.689-.073 4.948s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98c1.281.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98c.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98c-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324a6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8a4 4 0 010 8zm6.5-11.75a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
-                </a>
-                <a href="#" class="hover:text-blue-700 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M22.25 6.442a.75.75 0 0 1 .163 1.018l-3.253 4.88c-.14.21-.357.387-.611.528l1.455 1.157c.219.174.346.43.346.702v1.517c0 .487-.395.882-.882.882H19.5a.75.75 0 0 1 0-1.5H20v-1.127l-2.007-1.597l.79-1.185l.79-1.186l1.246-1.87c.28-.42.235-1.002-.128-1.371a.75.75 0 0 1 1.018.163zm-4.103 2.19l-.547.821c-.482-.132-.977-.282-1.465-.453l-.854-.23c-1.189-.323-2.316-.27-3.351-.048c-.99.217-1.921.68-2.713 1.348c-1.267 1.066-2.145 2.508-2.52 4.14c-.375 1.632-.236 3.284.407 4.805c.642 1.522 1.76 2.85 3.218 3.824c1.458.973 3.12 1.513 4.832 1.513c1.714 0 3.374-.54 4.832-1.513c1.458-.973 2.576-2.302 3.218-3.824c.643-1.521.782-3.173.407-4.805a9.018 9.018 0 0 0-2.52-4.14c-.792-.668-1.723-1.131-2.713-1.348c-.532-.116-1.077-.184-1.626-.204zm-1.854 4.298c-1.734-.055-3.333-.513-4.733-1.397c-.98-.616-1.776-1.472-2.327-2.483a.75.75 0 0 1 1.144-.816c.49.866 1.198 1.62 2.057 2.146c1.073.666 2.373 1.057 3.733 1.057a.75.75 0 0 1 .75.75zm.968 4.717c-1.36.42-2.825.424-4.2.145c-1.36-.28-2.61-.91-3.69-1.85a.75.75 0 0 1 .97-.936c.92.793 1.996 1.453 3.155 1.78a5.275 5.275 0 0 0 3.834-.146a.75.75 0 0 1 .931.96zm-.43-3.41c-.482.26-1.026.43-1.627.502c-1.464.175-2.906-.11-4.223-.746a.75.75 0 0 1 .655-1.332c1.085.534 2.27.818 3.483.714c.644-.055 1.282-.236 1.895-.536a.75.75 0 0 1 .958 1.084zM12 21.75c-5.352 0-9.75-4.398-9.75-9.75S6.648 2.25 12 2.25s9.75 4.398 9.75 9.75s-4.398 9.75-9.75 9.75zm0 1.5c6.19 0 11.25-5.06 11.25-11.25S18.19 0 12 0S.75 5.06.75 11.25S5.81 22.5 12 22.5z"/></svg>
-                </a>
-                <a href="https://twitter.com/Pasha317929060" class="hover:text-blue-700 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M22 6.002c-.886.393-1.83.656-2.82.775c1.02-.613 1.801-1.583 2.16-2.73a.75.75 0 0 0-1.072-1.056c-1.12.518-2.348.904-3.64 1.13c-1.05-.98-2.45-1.58-4.04-1.58c-3.67 0-6.65 2.98-6.65 6.65c0 .52.06 1.02.17 1.49c-5.52-.28-10.42-2.92-13.68-6.93a.75.75 0 0 0-.964.18c-.464.76-.71 1.62-.71 2.53c0 2.3 1.16 4.33 2.92 5.51a.75.75 0 0 0-.32-.99c-.19-.115-.407-.2-.638-.258a.75.75 0 0 0-.256 1.34c.94.52 2.01.81 3.12.81c.54 0 1.07-.06 1.59-.18a.75.75 0 0 0-.22 1.48c-1.8.69-3.68 1.05-5.63 1.05a.75.75 0 0 0 0 1.5c2.09 0 4.1-.38 5.9-1.12c4.1-1.6 7.02-5.7 7.02-10.48c0-.14-.02-.28-.04-.42a.75.75 0 0 0-.61-.63c-1.42.75-3.08 1.18-4.83 1.18a.75.75 0 0 0 0 1.5c1.86 0 3.63-.44 5.25-1.28c1.3-.68 2.37-1.78 3.17-3.11z"/></svg>
-                </a>
-                <a href="#" class="hover:text-blue-700 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.502 1.492-3.89 3.777-3.89c1.094 0 2.238.195 2.238.195V8.56h-1.22c-1.205 0-1.583.75-1.583 1.51v1.89h2.838l-.454 2.91h-2.384v6.989A10.01 10.01 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-                </a>
-                <a href="https://linkedin.com/in/hm-mujahid-pasha-70298b374" class="hover:text-blue-700 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5c0 1.381-1.119 2.5-2.5 2.5s-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5s2.5 1.119 2.5 2.5zM22 24V14.5c0-4.306-3.791-6.19-7.311-6.19c-1.77 0-3.09 1.018-3.921 1.942v-1.761H6V24h5V14.5c0-1.85 1.528-2.618 2.825-2.618c1.36 0 2.176 1.026 2.176 2.618V24H22zM6 9H1V24H6V9z"/></svg>
-                </a>
+
+            <div class="w-full mt-8">
+                <a href="mailto:hmmujahidpasha@example.com" class="block w-full text-center bg-[#8B4513] text-white font-semibold text-sm py-3 px-6 rounded-xl hover:bg-[#A0522D] shadow-sm transition-all duration-200">Email Inquiry</a>
+                
+                <div class="flex justify-center gap-4 mt-6 text-gray-400">
+                    <a href="https://linkedin.com/in/hm-mujahid-pasha-70298b374" target="_blank" class="p-2 rounded-lg hover:bg-[#8B4513]/5 hover:text-[#8B4513] transition-all duration-200">
+                        <svg class="w-5 h-5 fill-currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://github.com/mujahid" target="_blank" class="p-2 rounded-lg hover:bg-[#8B4513]/5 hover:text-[#8B4513] transition-all duration-200">
+                        <svg class="w-5 h-5 fill-currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/Pasha317929060" target="_blank" class="p-2 rounded-lg hover:bg-[#8B4513]/5 hover:text-[#8B4513] transition-all duration-200">
+                        <svg class="w-5 h-5 fill-currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
         
-        <div class="rounded-2xl shadow-lg p-12 w-full md:w-2/3 animate-right flex flex-col flex-1"
-             style="background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1549225895-30312aa9147e?auto=format&fit=crop&q=80'); background-size: cover; background-position: center;">
-            <h2 class="playfair text-4xl font-bold text-[#333] mb-4">About Me</h2>
-            <p class="text-base text-gray-700 leading-relaxed">I am a tech-savvy individual with a Bachelor's degree in Computer Science specializing in Artificial Intelligence,
-                                seeking employment as an AI/ML Engineer or Data Analyst. My strong foundation in data science is built upon my skills in Python, NumPy, and Pandas, as well as
-                                my knowledge of supervised learning. I have also gained practical experience with DSA and databases like SQL and NoSQL. I am dedicated to applying my technical
-                                skills to solve complex problems and contribute to innovative projects in the field of AI and data analysis.</p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-                <a href="https://drive.google.com/file/d/1kFvgqVs3m4sAQtowCz3TlXfetYPV7SjY/view?usp=drivesdk" class="bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-blue-800 transition-colors duration-200">Resume</a>
-                <a href="#" class="bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:bg-blue-800 transition-colors duration-200">Portfolio</a>
+        <div class="glass-card rounded-2xl shadow-sm p-8 md:p-12 w-full lg:w-2/3 animate-right flex flex-col justify-between premium-hover transition-all duration-300">
+            <div>
+                <div class="mb-6">
+                    <h2 class="playfair text-4xl font-bold text-gray-900 tracking-tight">About Me</h2>
+                    <div class="w-12 h-1 bg-[#8B4513] mt-3 rounded-full"></div>
+                </div>
+
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed font-medium">
+                    I am a tech-savvy engineer with a Bachelor's degree in Computer Science specializing in Artificial Intelligence, actively pursuing opportunities as an <strong class="text-gray-900 font-semibold">AI/ML Engineer</strong> or <strong class="text-gray-900 font-semibold">Data Analyst</strong>. 
+                </p>
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed font-medium mt-4">
+                    My foundational core in data science is built upon intensive application execution in <span class="text-gray-900 font-semibold">Python, NumPy, and Pandas</span> alongside solid implementations of supervised learning frameworks. I pair this structural model architecture with data structure analytics and rigorous database engineering constraints across <span class="text-gray-900 font-semibold">SQL and NoSQL topologies</span> to construct comprehensive computational systems that drive insight.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    <div class="bg-white/50 rounded-xl p-4 border border-gray-100 flex items-start">
+                        <div class="w-8 h-8 rounded-lg bg-[#8B4513]/5 text-[#8B4513] flex items-center justify-center mr-3.5 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-800">Advanced Analytics</h4>
+                            <p class="text-xs text-gray-400 font-medium mt-0.5">High-velocity transformation with Python array primitives.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/50 rounded-xl p-4 border border-gray-100 flex items-start">
+                        <div class="w-8 h-8 rounded-lg bg-[#8B4513]/5 text-[#8B4513] flex items-center justify-center mr-3.5 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-800">Model Deployment</h4>
+                            <p class="text-xs text-gray-400 font-medium mt-0.5">Supervised learning execution and operational engineering metrics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 mt-10 w-full sm:w-auto">
+                <a href="https://drive.google.com/file/d/1kFvgqVs3m4sAQtowCz3TlXfetYPV7SjY/view?usp=drivesdk" target="_blank" class="inline-flex justify-center items-center bg-[#8B4513] text-white font-semibold text-xs py-3 px-6 rounded-xl hover:bg-[#A0522D] shadow-sm transition-all duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Access Resume (.PDF)
+                </a>
+                <a href="2nd.html" class="inline-flex justify-center items-center border border-gray-300 bg-white text-gray-700 font-semibold text-xs py-3 px-6 rounded-xl hover:bg-gray-50 shadow-sm transition-all duration-200">
+                    Explore Experience Journey &rarr;
+                </a>
             </div>
         </div>
     </main>
-</body>
-<script>
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const navLinks = document.getElementById('nav-links');
 
-    // Toggles the visibility of the navigation links on mobile
-    mobileMenuButton.addEventListener('click', () => {
-        navLinks.classList.toggle('hidden');
-        navLinks.classList.toggle('flex');
-    });
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    // Ensures the menu hides when the window is resized back to desktop size
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-            navLinks.classList.add('hidden');
-            navLinks.classList.remove('flex');
-        }
-    });
-
-    // Optional: Hide the menu after a link is clicked
-    const links = navLinks.querySelectorAll('a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 768) {
-                navLinks.classList.add('hidden');
-                navLinks.classList.remove('flex');
-            }
+        // Toggles mobile menu drawer display mapping
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-    });
-</script>
+    </script>
+</body>
 </html>

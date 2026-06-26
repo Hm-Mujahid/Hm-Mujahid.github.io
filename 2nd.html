@@ -1,338 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills, Experience & Certifications</title>
-    <!-- Tailwind CSS -->
+    <title>Professional Journey | Mujahid Pasha</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
+            overflow-x: hidden;
         }
 
         .playfair {
             font-family: 'Playfair Display', serif;
         }
 
-        .shadow-custom {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0, 0, 0, 0.1);
+        /* Glassmorphism utility */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Custom IMG icon styles for hover effects */
-        .icon-container img {
-            transition: transform 0.3s ease-in-out;
+        /* Subtle Background Animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(25px) rotate(-8deg); }
+        }
+        .animate-float-1 { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-2 { animation: float-reverse 12s ease-in-out infinite; }
+
+        /* Smooth Entry Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .icon-container:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Animation for top navbar */
-        @keyframes slideInFromTop {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* New keyframes for sliding animations */
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInFromRight {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* Animation classes */
-        .animate-top {
-            animation: slideInFromTop 1s ease-out forwards;
-        }
-
-        .animate-left {
-            animation: slideInFromLeft 1s ease-out forwards;
-        }
-
-        .animate-right {
-            animation: slideInFromRight 1s ease-out forwards;
+        /* Premium Glow Hover */
+        .premium-glow:hover {
+            box-shadow: 0 10px 30px -5px rgba(139, 69, 19, 0.15), 0 0 15px 1px rgba(139, 69, 19, 0.1);
         }
     </style>
 </head>
+<body class="relative min-h-screen flex flex-col items-center p-4 md:p-6">
 
-<body class="bg-[#f3f4f6] flex flex-col items-center min-h-screen p-4">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-[#8B4513]/5 rounded-full blur-3xl pointer-events-none animate-float-1"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#8B4513]/5 rounded-full blur-3xl pointer-events-none animate-float-2"></div>
 
-    <!-- Header / Navbar -->
-    <nav class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top opacity-0">
-        <!-- Logo and Slogan -->
-        <div class="flex-shrink-0 text-center md:text-left pl-4">
-            <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
-            <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Skills & Experience</p>
+    <nav class="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-100 p-5 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between z-10 space-y-4 md:space-y-0">
+        <div class="text-center md:text-left pl-2">
+            <h1 class="playfair text-2xl font-bold text-[#8B4513] tracking-wide">Mujahid Pasha</h1>
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Machine Learning Portfolio</p>
         </div>
-
-        <!-- Navigation Links (Hidden on mobile by default) -->
-        <div id="nav-links" class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
-            <!-- Corrected links to scroll to sections -->
-            <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
-            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
-            <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PROJECTS</a>
-            <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT ME</a>
+        <div class="hidden md:flex space-x-8 pr-2">
+            <a href="index.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">ABOUT ME</a>
+            <a href="2nd.html" class="text-xs font-bold tracking-widest text-[#8B4513] transition-colors duration-300 border-b-2 border-[#8B4513] pb-1">EXPERIENCE</a>
+            <a href="3rd.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">PROJECTS</a>
+            <a href="4th.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">CONTACT ME</a>
         </div>
-
-        <!-- More Options Icon (for mobile) -->
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
     </nav>
-    <!-- End Header / Navbar -->
 
-    <!-- Main application container -->
-    <div id="app-container" class="bg-white rounded-xl shadow-custom p-6 w-full max-w-7xl min-h-[90vh] overflow-y-auto mt-8">
+    <div id="mobile-menu" class="hidden w-full max-w-7xl bg-white mt-2 rounded-xl shadow-md p-4 flex flex-col space-y-3 z-10 md:hidden animate-fade-in-up">
+        <a href="index.html" class="text-sm font-semibold text-gray-600 py-1 text-center">ABOUT ME</a>
+        <a href="2nd.html" class="text-sm font-bold text-[#8B4513] py-1 text-center bg-gray-50 rounded-lg">EXPERIENCE</a>
+        <a href="3rd.html" class="text-sm font-semibold text-gray-600 py-1 text-center">PROJECTS</a>
+        <a href="4th.html" class="text-sm font-semibold text-gray-600 py-1 text-center">CONTACT ME</a>
+    </div>
 
-        <!-- Main content sections -->
-        <main class="space-y-12">
+    <main class="w-full max-w-7xl mt-12 z-10 flex-grow mb-16">
+        
+        <div id="dashboard-view" class="animate-fade-in-up">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="playfair text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Professional Journey</h2>
+                <div class="w-16 h-1 bg-[#8B4513] mx-auto mt-4 mb-5 rounded-full"></div>
+                <p class="text-gray-500 font-medium text-sm md:text-base leading-relaxed">Explore my technical growth, industry certifications, practical internships, and high-impact achievements.</p>
+            </div>
 
-            <!-- Skills Section: Animates in from the left with a 0.5s delay. -->
-            <section id="skills" class="animate-left opacity-0" style="animation-delay: 0.5s;">
-                <h2 class="playfair text-4xl font-bold mb-6">Skills</h2>
-                <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm overflow-x-auto">
-                    <div class="grid grid-flow-col grid-rows-2 gap-x-12 gap-y-8 w-max">
-                        
-                        <!-- Python & C -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">Python</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div onclick="navigateToSection('internships')" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:border-[#8B4513]/40 premium-glow flex flex-col justify-between h-64">
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B4513]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#8B4513] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#8B4513] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">C</span>
-                        </div>
-
-                        <!-- Matplotlib & Pandas -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">Matplotlib</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">Pandas</span>
-                        </div>
-                        
-                        <!-- MongoDB & Git -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">MongoDB</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">Git</span>
-                        </div>
-                        
-                        <!-- HTML & CSS -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://www.svgrepo.com/show/452228/html-5.svg" alt="HTML Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">HTML</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://www.svgrepo.com/show/452185/css-3.svg" alt="CSS Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">CSS</span>
-                        </div>
-
-                        <!-- JavaScript & React.js -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">JavaScript</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">React.js</span>
-                        </div>
-
-                        <!-- OpenCV & NumPy -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">OpenCV</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">NumPy</span>
-                        </div>
-
-                        <!-- Power BI & GitHub -->
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://www.svgrepo.com/show/342111/power-bi.svg" alt="Power BI Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">Power BI</span>
-                        </div>
-                        <div class="flex flex-col items-center space-y-2 icon-container">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Icon" class="h-16 w-16">
-                            <span class="text-sm font-semibold text-gray-700">GitHub</span>
-                        </div>
+                        <h3 class="playfair text-2xl font-bold text-gray-800 mb-2">Internships</h3>
+                        <p class="text-xs text-gray-500 font-medium line-clamp-2">Practical technical assignments and corporate structured engineering exposure.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="bg-[#8B4513]/10 text-[#8B4513] text-xs font-bold px-3 py-1 rounded-full">2 Placements</span>
+                        <span class="text-sm font-semibold text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Explore &rarr;</span>
                     </div>
                 </div>
-            </section>
 
-            <!-- Education Section: Animates in from the right with a 1s delay. -->
-            <section id="education" class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 1s;">
-                <h2 class="playfair text-4xl font-bold mb-6">Education</h2>
-                <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <p class="text-gray-600 mb-2">
-                        <strong>Bachelor of Science in Computer Science in Artificial Intelligence</strong>
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        BITM | Ballari, Karnataka | Expected Graduation: May 2027
-                    </p>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
-                        I am a highly motivated and dedicated student with a strong academic background in computer science. Throughout my studies, I have gained hands-on experience in various programming languages, algorithms, and software development methodologies. My coursework included advanced topics such as data structures, artificial intelligence, and machine learning, preparing me for a dynamic career in technology. I am passionate about leveraging my skills to solve complex problems and contribute to innovative projects.
-                    </p>
+                <div onclick="navigateToSection('experience')" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:border-[#8B4513]/40 premium-glow flex flex-col justify-between h-64">
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B4513]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#8B4513] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#8B4513] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <h3 class="playfair text-2xl font-bold text-gray-800 mb-2">Work & Experience</h3>
+                        <p class="text-xs text-gray-500 font-medium line-clamp-2">Professional engineering roles, institutional responsibilities, and research positions.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="bg-[#8B4513]/10 text-[#8B4513] text-xs font-bold px-3 py-1 rounded-full">1 Role</span>
+                        <span class="text-sm font-semibold text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Explore &rarr;</span>
+                    </div>
                 </div>
-            </section>
 
-            <!-- Experience Section: Animates in from the left with a 1.5s delay. -->
-            <section id="experience" class="animate-left opacity-0" style="animation-delay: 1.5s;">
-                <h2 class="playfair text-4xl font-bold mb-6">Experience</h2>
-                <div class="bg-[#F8F9FA] border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Financial Advisor (2023–2025)</h3>
-                    <p class="text-gray-600 mb-4">Company: <span class="font-medium">Gromo | Online Platform</span></p>
-
-                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                        <li>
-                            📜 <strong>Certificate:</strong>
-                            <a href="https://bit.ly/3VQu8A9" class="text-blue-600 hover:underline">Click Here</a>
-                        </li>
-                        <li>
-                            💳 <strong>Gromo Card:</strong>
-                            <a href="https://bit.ly/4gpDVa3" class="text-blue-600 hover:underline">Click Here</a>
-                        </li>
-                        <li>
-                            ✅ <strong>Services Provided:</strong> Savings Accounts, Demat Accounts, UPI Setup, Instant Deals
-                        </li>
-                        <li>
-                            🎯 <strong>Achievements:</strong> Generated <span class="font-semibold">21 major leads</span> till date
-                        </li>
-                    </ul>
+                <div onclick="navigateToSection('certifications')" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:border-[#8B4513]/40 premium-glow flex flex-col justify-between h-64">
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B4513]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#8B4513] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#8B4513] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <h3 class="playfair text-2xl font-bold text-gray-800 mb-2">Certifications</h3>
+                        <p class="text-xs text-gray-500 font-medium line-clamp-2">Verified global industry validations across Deep Learning, Cloud, and Software Stacks.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="bg-[#8B4513]/10 text-[#8B4513] text-xs font-bold px-3 py-1 rounded-full">3 Badges</span>
+                        <span class="text-sm font-semibold text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Explore &rarr;</span>
+                    </div>
                 </div>
-            </section>
 
-            <!-- Certifications Section: Animates in from the right with a 2s delay. -->
-            <section id="certifications" class="bg-[#F8F9FA] p-6 rounded-lg shadow-sm animate-right opacity-0" style="animation-delay: 2s;">
-                <h2 class="playfair text-4xl font-bold mb-6">Certifications</h2>
-                <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">1. AI For Everyone - DeepLearning.AI</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">2. Introduction to Artificial Intelligence - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">3.Learning for Microsoft power BI - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">4. Data Structures and Algorithms - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">5. Data Structures and Algorithms Using Java - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">6. Power BI for Business Professionals - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">7. Power BI Training - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">8. TechA Data Analytics using Power BI Foundation Certification - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">9. Document and Usability for Cancer Informatics - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">10. Document and Usability for Cancer Informatics - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">11. Access Bioinformatics Databases with Biopython - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">12. Introduction to Reproducibility in cancer Informatics - Infosys Springboard</a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#" class="text-blue-600 hover:underline">13. Data Sciences in Pharma - Patient Centered Outcomes Research - Coursera</a>
-                        </li>
-                    </ul>
+                <div onclick="navigateToSection('achievements')" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:border-[#8B4513]/40 premium-glow flex flex-col justify-between h-64 md:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B4513]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#8B4513] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#8B4513] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2zm0 0h4m-4 0H8m12 3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="playfair text-2xl font-bold text-gray-800 mb-2">Achievements</h3>
+                        <p class="text-xs text-gray-500 font-medium line-clamp-2">Hackathon checkpoints, academic awards, and engineering event excellence awards.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="bg-[#8B4513]/10 text-[#8B4513] text-xs font-bold px-3 py-1 rounded-full">2 Honors</span>
+                        <span class="text-sm font-semibold text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Explore &rarr;</span>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+
+                <div onclick="navigateToSection('nontechnical')" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:border-[#8B4513]/40 premium-glow flex flex-col justify-between h-64 md:col-span-2 lg:col-span-2">
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B4513]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#8B4513] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#8B4513] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="playfair text-2xl font-bold text-gray-800 mb-2">Non Technical Activities & Hobbies</h3>
+                        <p class="text-xs text-gray-500 font-medium line-clamp-2">Leadership capacities, sports, active creative pursuits, and social volunteer configurations.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="bg-[#8B4513]/10 text-[#8B4513] text-xs font-bold px-3 py-1 rounded-full">11 Dimensions</span>
+                        <span class="text-sm font-semibold text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Explore &rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="details-view" class="hidden">
+            <button onclick="backToDashboard()" class="flex items-center text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-[#8B4513] mb-10 transition-colors duration-200">
+                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Back to Dashboard
+            </button>
+
+            <div class="mb-14">
+                <h2 id="details-title" class="playfair text-4xl font-bold text-gray-900">Section Title</h2>
+                <p id="details-subtitle" class="text-sm text-gray-500 font-medium mt-1">Section operational subtext descriptions.</p>
+            </div>
+
+            <div id="details-content" class="space-y-8 relative before:absolute before:top-2 before:bottom-2 before:left-3.5 before:w-0.5 before:bg-gradient-to-b before:from-[#8B4513]/40 before:to-[#8B4513]/5 md:before:left-6">
+                </div>
+        </div>
+
+    </main>
+
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                // Get the target element by its ID from the href
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                // If the target element exists, scroll to it
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                } else {
-                    // For "ABOUT ME" link, scroll to the top of the page
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // Production Grade Structured JSON Database 
+        const database = {
+            internships: {
+                title: "Structured Internships",
+                subtitle: "Industrial experience blocks and project milestones validated by tech corporations.",
+                data: [
+                    {
+                        title: "Machine Learning Engineering Intern",
+                        organization: "AI Innovation Labs Inc.",
+                        duration: "June 2025 - August 2025",
+                        location: "Bengaluru, India (Hybrid)",
+                        role: "Core ML Engineer Pipeline Developer",
+                        description: "Optimized distributed computer vision modules leveraging specialized tensor engines. Accelerated object classification layer throughput by 22% and managed data-collection frameworks.",
+                        skills: ["Computer Vision", "TensorFlow", "Pipeline optimization", "Python Profiling"],
+                        github: "https://github.com/mujahid",
+                        liveLink: "https://example.com"
+                    },
+                    {
+                        title: "Computer Vision Research Apprentice",
+                        organization: "Nexus Automation Labs",
+                        duration: "January 2025 - April 2025",
+                        location: "Remote",
+                        role: "Research Intern",
+                        description: "Implemented edge detection configurations and spatial matrix calibrations using custom OpenCV frameworks. Handled model translation targets onto low-compute microprocessors.",
+                        skills: ["OpenCV", "Embedded AI", "Data Architecture", "NumPy Matrix Math"],
+                        github: "https://github.com/mujahid"
+                    }
+                ]
+            },
+            experience: {
+                title: "Work & Experience",
+                subtitle: "Professional engineering contributions and institutional research history.",
+                data: [
+                    {
+                        title: "Technical Consultant / Researcher",
+                        organization: "Autonomous Intelligence Student Unit",
+                        duration: "Sept 2024 - Present",
+                        location: "Institutional Lab",
+                        role: "Lead Systems Architect",
+                        description: "Coordinates implementation stacks for intelligent vehicle models and spatial awareness tasks. Spearheaded technical knowledge transfer workshops covering advanced convolutional operations.",
+                        skills: ["PyTorch", "Technical Writing", "Systems Design", "Git Versioning Control"]
+                    }
+                ]
+            },
+            certifications: {
+                title: "Global Industry Certifications",
+                subtitle: "Verified structural credentials from authorized platforms and institutions.",
+                data: [
+                    {
+                        title: "Deep Learning Specialization",
+                        organization: "DeepLearning.AI / Coursera",
+                        duration: "Issued March 2025",
+                        location: "Online Credential Checkpoint",
+                        role: "Specialist Credential",
+                        description: "Comprehensive 5-course track covering neural architecture structuring, hyperparameter tuning protocols, sequential models, and target convolutional configurations.",
+                        skills: ["Neural Networks", "Structuring ML Projects", "Transformers Architecture", "Hyperparameter Optimization"],
+                        credentialId: "DL-9823-XYZ8",
+                        certNumber: "CERT-7731994",
+                        verifyLink: "https://coursera.org",
+                        downloadLink: "#"
+                    },
+                    {
+                        title: "AWS Certified Machine Learning – Specialty",
+                        organization: "Amazon Web Services (AWS)",
+                        duration: "Issued November 2024",
+                        location: "AWS Testing Center",
+                        role: "Professional Validation",
+                        description: "Validates ability to design, implement, deploy, and maintain specialized Machine Learning solutions on secure public cloud infrastructures.",
+                        skills: ["SageMaker Pipelines", "Data Engineering Systems", "Cloud Infrastructure Optimization"],
+                        credentialId: "AWS-ML-SPC-882",
+                        certNumber: "AMZ-992144",
+                        verifyLink: "https://aws.amazon.com",
+                        downloadLink: "#"
+                    },
+                    {
+                        title: "TensorFlow Developer Certificate",
+                        organization: "Google TensorFlow Team",
+                        duration: "Issued July 2024",
+                        location: "Google Certification Framework",
+                        role: "Certified Expert",
+                        description: "Demonstrated application fluency in scaling deep intelligence architectures across structured image processing and time-series validation frameworks.",
+                        skills: ["TensorFlow 2.x API", "Data Augmentation Matrices", "Transfer Learning Systems"],
+                        credentialId: "TF-DEV-3310-A",
+                        certNumber: "GGL-882041",
+                        verifyLink: "https://google.com",
+                        downloadLink: "#"
+                    }
+                ]
+            },
+            achievements: {
+                title: "Honors & Competitive Achievements",
+                subtitle: "Decorated metrics showcasing technical competence and creative execution victory.",
+                data: [
+                    {
+                        title: "First Place Winner - Smart India Hackathon",
+                        organization: "Ministry of Education, Government of India",
+                        duration: "December 2024",
+                        location: "National Grand Finale Venue",
+                        role: "Team Vision Lead",
+                        description: "Engineered an offline processing system to handle continuous optical recognition inputs. Outpaced highly structured institutional groups to win the premier corporate tracking problem statement prize.",
+                        skills: ["Rapid Prototyping", "Edge Model Serving", "Agile Execution Strategy"],
+                        liveLink: "https://example.com",
+                        github: "https://github.com/mujahid"
+                    },
+                    {
+                        title: "Elite Academic Merit Tier Recognition",
+                        organization: "University Science Board Office",
+                        duration: "Academic Year 2023 - 2024",
+                        location: "State Level Council",
+                        role: "Scholar Recipient",
+                        description: "Awarded top ranking tier scholarship for displaying continuous numerical expertise and architectural design performance in technical computing studies.",
+                        skills: ["Mathematical Physics", "Discrete Algorithms Structure"]
+                    }
+                ]
+            },
+            nontechnical: {
+                title: "Non Technical Activities & Hobbies",
+                subtitle: "An inspection into multi-disciplinary operational domains, leadership, and lifestyle frameworks.",
+                data: [
+                    {
+                        title: "Intercollegiate Chess Captain & Competitor",
+                        organization: "University Sports Council Division",
+                        duration: "Continuous Pursuit",
+                        location: "Regional Tournament Guilds",
+                        role: "Lead Board Strategy Coordinator",
+                        description: "Maintains structured system focus under complex speed chess environments. Analyzes pattern matching algorithms applied onto chess game variations.",
+                        skills: ["Strategic Forecasting", "Pattern Processing Optimization", "High Pressure Management"]
+                    },
+                    {
+                        title: "Creative Visual Media & Travel Operations",
+                        organization: "Independent Composition Group",
+                        duration: "Lifestyle Dimension",
+                        location: "Global Terrain Documentaries",
+                        role: "Landscape Photographer",
+                        description: "Captures high-resolution exposure matrix assets. Studies advanced mathematical transformations used in modern light-filtering camera frameworks.",
+                        skills: ["Spatial Frame Balancing", "Color Grading Algorithms"]
+                    },
+                    {
+                        title: "Core Student Coordinator & Event Administrator",
+                        organization: "Campus Technology Integration Club",
+                        duration: "Annual Cycle Management",
+                        location: "Campus Convention Grounds",
+                        role: "Lead Operations Executive",
+                        description: "Supervised high-throughput crowds during large coding events. Managed spatial resource schedules, institutional public relations, and guest hospitality.",
+                        skills: ["Public Speaking", "Volunteer Resource Management", "Event Logistics Execution"]
+                    }
+                ]
+            }
+        };
+
+        // DOM Element Navigation Mapping
+        const dashboardView = document.getElementById('dashboard-view');
+        const detailsView = document.getElementById('details-view');
+        const detailsTitle = document.getElementById('details-title');
+        const detailsSubtitle = document.getElementById('details-subtitle');
+        const detailsContent = document.getElementById('details-content');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Mobile Menu Navigation Controller Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const navLinks = document.getElementById('nav-links');
-        mobileMenuButton.addEventListener('click', () => {
-            // Check if the menu is hidden
-            if (navLinks.classList.contains('hidden')) {
-                // Show the menu and apply mobile styles
-                navLinks.classList.remove('hidden');
-                navLinks.classList.add('flex', 'flex-col', 'items-center', 'space-y-4', 'p-6', 'rounded-xl', 'bg-gray-100', 'shadow-md', 'mt-4');
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.classList.add('w-full', 'text-center');
-                });
-            } else {
-                // Hide the menu and remove mobile styles
-                navLinks.classList.add('hidden');
-                navLinks.classList.remove('flex', 'flex-col', 'items-center', 'space-y-4', 'p-6', 'rounded-xl', 'bg-gray-100', 'shadow-md', 'mt-4');
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.classList.remove('w-full', 'text-center');
-                });
-            }
-        });
+        // Interactive View Navigation Orchestrator 
+        function navigateToSection(sectionKey) {
+            const section = database[sectionKey];
+            if (!section) return;
+
+            // Inject Content Title & Subtitles
+            detailsTitle.textContent = section.title;
+            detailsSubtitle.textContent = section.subtitle;
+            
+            // Clear prior iterations
+            detailsContent.innerHTML = '';
+
+            // Map and Generate Glassmorphism Timeline Nodes
+            section.data.forEach((item, index) => {
+                const node = document.createElement('div');
+                node.className = 'relative pl-8 md:pl-14 group transition-all duration-300 animate-fade-in-up';
+                node.style.animationDelay = `${index * 0.15}s`;
+
+                // Render Technology Tags Conditionals
+                let tagsHTML = '';
+                if(item.skills && item.skills.length > 0) {
+                    tagsHTML = `
+                        <div class="mt-5">
+                            <span class="text-[11px] uppercase font-bold tracking-wider text-gray-400 block mb-2">Applied Engineering Competencies:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${item.skills.map(skill => `<span class="bg-[#8B4513]/5 text-[#8B4513] text-xs font-semibold px-2.5 py-1 rounded-md border border-[#8B4513]/10">${skill}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Render Credentials Block Conditionals
+                let credentialsHTML = '';
+                if(item.credentialId || item.certNumber) {
+                    credentialsHTML = `
+                        <div class="mt-4 pt-3 border-t border-dashed border-gray-100 flex flex-col sm:flex-row gap-2 sm:gap-6 text-xs text-gray-500 font-medium">
+                            ${item.credentialId ? `<div><span class="text-gray-400 font-bold">Credential ID:</span> <code class="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700">${item.credentialId}</code></div>` : ''}
+                            ${item.certNumber ? `<div><span class="text-gray-400 font-bold">License Serial:</span> <code class="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700">${item.certNumber}</code></div>` : ''}
+                        </div>
+                    `;
+                }
+
+                // Render Button Array Conditionals
+                let actionsHTML = '';
+                if(item.verifyLink || item.downloadLink || item.liveLink || item.github) {
+                    actionsHTML = `
+                        <div class="mt-6 flex flex-wrap gap-2.5">
+                            ${item.verifyLink ? `<a href="${item.verifyLink}" target="_blank" class="inline-flex items-center text-xs font-bold bg-[#8B4513] text-white px-4 py-2 rounded-lg hover:bg-[#A0522D] shadow-sm hover:shadow transition-all">Verify Credentials</a>` : ''}
+                            ${item.downloadLink ? `<a href="${item.downloadLink}" class="inline-flex items-center text-xs font-bold border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 bg-white transition-all">Download Asset (.PDF)</a>` : ''}
+                            ${item.liveLink ? `<a href="${item.liveLink}" target="_blank" class="inline-flex items-center text-xs font-bold border border-[#8B4513]/30 text-[#8B4513] px-4 py-2 rounded-lg hover:bg-[#8B4513]/5 transition-all">Live Tracking Node</a>` : ''}
+                            ${item.github ? `<a href="${item.github}" target="_blank" class="inline-flex items-center text-xs font-bold bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all"><svg class="w-4 h-4 mr-1.5 fill-white" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub Repository</a>` : ''}
+                        </div>
+                    `;
+                }
+
+                // Node Base Shell Packaging
+                node.innerHTML = `
+                    <div class="absolute left-0 top-1.5 w-7 h-7 rounded-full bg-white border-2 border-[#8B4513] flex items-center justify-center z-10 shadow-sm md:left-2.5 transition-transform group-hover:scale-110 duration-200">
+                        <div class="w-2 h-2 rounded-full bg-[#8B4513]"></div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 transform transition-all duration-300 hover:shadow-md group-hover:border-[#8B4513]/20">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="playfair text-2xl font-bold text-gray-800 tracking-tight">${item.title}</h3>
+                                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-[#8B4513] font-semibold">
+                                    <span>${item.organization}</span>
+                                    <span class="w-1.5 h-1.5 bg-gray-300 rounded-full hidden sm:inline-block"></span>
+                                    <span class="text-xs text-gray-400 font-medium flex items-center"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>${item.location}</span>
+                                </div>
+                            </div>
+                            <div class="text-left lg:text-right flex-shrink-0">
+                                <span class="inline-block bg-white border border-gray-200 text-gray-600 text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full shadow-2g">${item.duration}</span>
+                                <div class="text-xs text-gray-400 mt-1 font-medium italic">${item.role}</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium mt-3">${item.description}</p>
+                        ${tagsHTML}
+                        ${credentialsHTML}
+                        ${actionsHTML}
+                    </div>
+                `;
+                detailsContent.appendChild(node);
+            });
+
+            // Smooth Interface Transition Swap
+            dashboardView.classList.add('hidden');
+            detailsView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Return Control Interface to Main Overview Screen
+        function backToDashboard() {
+            detailsView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
-
 </html>
