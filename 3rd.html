@@ -3,231 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Portfolio</title>
+    <title>Projects | Mujahid Pasha</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
+            overflow-x: hidden;
         }
 
         .playfair {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Animation for top navbar */
-        @keyframes slideInFromTop {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        /* Glassmorphism Structural Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* Animation for content blocks from left */
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        /* Ambient Floating Animation Keyframes */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.03); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(20px) scale(0.97); }
+        }
+        .animate-float-1 { animation: float-slow 12s ease-in-out infinite; }
+        .animate-float-2 { animation: float-reverse 16s ease-in-out infinite; }
+
+        /* Performance Accelerated Structural Transitions */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Animation for content blocks from right */
-        @keyframes slideInFromRight {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .animate-top { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-right { animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fade { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* Premium Depth Hover Foundations */
+        .premium-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        /* General fade-in animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        .premium-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(139, 69, 19, 0.08), 0 0 20px 1px rgba(139, 69, 19, 0.02);
         }
 
-        .animate-top {
-            animation: slideInFromTop 1s ease-out forwards;
-        }
-        
-        .animate-left {
-            animation: slideInFromLeft 1s ease-out forwards;
-        }
-
-        .animate-right {
-            animation: slideInFromRight 1s ease-out forwards;
-        }
-
-        .animate-fade {
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        /* Custom style for the visualizer */
+        /* Dynamic Visualizer Core Styling */
         .visualizer-container {
-            background-color: #4a5568; /* Dark gray background */
+            background: linear-gradient(135deg, #2D1A10 0%, #1A0D06 100%);
             position: relative;
             display: flex;
-            align-items: flex-end; /* Align bars to the bottom */
+            align-items: flex-end;
             justify-content: space-around;
-            padding: 1rem;
-            min-height: 300px;
-            border-radius: 1rem;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            min-height: 340px;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .bar {
-            width: 10%;
-            background-color: #63b3ed; /* A nice blue color for the bars */
-            margin: 0 0.25rem;
-            transition: height 0.5s ease-in-out;
-            border-radius: 0.25rem;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        .visualizer-bar {
+            width: 14%;
+            background: linear-gradient(to top, #8B4513 0%, #CD853F 100%);
+            border-radius: 6px 6px 0 0;
+            transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-shadow: 0 0 15px rgba(205, 133, 63, 0.3);
+        }
+        .visualizer-bar::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 6px 6px 0 0;
         }
     </style>
 </head>
-<body class="bg-[#f3f4f6] flex flex-col items-center min-h-screen p-4">
+<body class="relative min-h-screen flex flex-col items-center p-4 md:p-6">
 
-    <!-- Navbar -->
-    <nav class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 animate-top">
-        <!-- Logo and Slogan -->
-        <div class="flex-shrink-0 text-center md:text-left pl-4">
-            <h1 class="playfair text-3xl font-bold text-[#8B4513]">Mujahid Pasha</h1>
-            <p class="text-xs uppercase tracking-wide text-gray-500 mt-1">Machine Learning Student</p>
-        </div>
+    <div class="absolute top-16 right-12 w-80 h-80 bg-[#8B4513]/4 rounded-full blur-3xl pointer-events-none animate-float-1"></div>
+    <div class="absolute bottom-24 left-8 w-96 h-96 bg-[#8B4513]/5 rounded-full blur-3xl pointer-events-none animate-float-2"></div>
 
-        <!-- Navigation Links -->
-        <div class="hidden md:flex flex-1 justify-end space-x-8 lg:space-x-12 pr-4">
-            <a href="index.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">ABOUT ME</a>
-            <a href="2nd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">SKILLS</a>
-            <a href="3rd.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">PROJECTS</a>
-            <a href="4th.html" class="text-sm font-semibold text-gray-700 hover:text-[#8B4513] transition-colors duration-200">CONTACT ME</a>
+    <nav class="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-100 p-5 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between z-10 space-y-4 md:space-y-0 animate-top">
+        <div class="text-center md:text-left pl-2">
+            <h1 class="playfair text-2xl font-bold text-[#8B4513] tracking-wide">Mujahid Pasha</h1>
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">Machine Learning Portfolio</p>
         </div>
-
-        <!-- More Options Icon (for mobile) -->
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="bg-gray-200 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
+        <div class="hidden md:flex space-x-8 pr-2">
+            <a href="index.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">ABOUT ME</a>
+            <a href="2nd.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">EXPERIENCE</a>
+            <a href="3rd.html" class="text-xs font-bold tracking-widest text-[#8B4513] border-b-2 border-[#8B4513] pb-1">PROJECTS</a>
+            <a href="4th.html" class="text-xs font-bold tracking-widest text-gray-400 hover:text-[#8B4513] transition-colors duration-300">CONTACT ME</a>
         </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
     </nav>
 
-    <!-- Mobile Navigation Links (Initially hidden) -->
-    <div id="mobile-menu" class="hidden bg-white w-full max-w-7xl rounded-b-2xl shadow-lg mt-2 p-4 md:hidden">
-        <a href="index.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">ABOUT ME</a>
-        <a href="2nd.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">SKILLS</a>
-        <a href="#My Projects" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">PROJECTS</a>
-        <a href="4th.html" class="block text-center text-gray-700 hover:text-[#8B4513] py-2 transition-colors duration-200">CONTACT ME</a>
+    <div id="mobile-menu" class="hidden w-full max-w-7xl bg-white mt-2 rounded-xl shadow-md p-4 flex flex-col space-y-3 z-10 md:hidden animate-top">
+        <a href="index.html" class="text-sm font-semibold text-gray-600 py-1 text-center">ABOUT ME</a>
+        <a href="2nd.html" class="text-sm font-semibold text-gray-600 py-1 text-center">EXPERIENCE</a>
+        <a href="3rd.html" class="text-sm font-bold text-[#8B4513] py-1 text-center bg-gray-50 rounded-lg">PROJECTS</a>
+        <a href="4th.html" class="text-sm font-semibold text-gray-600 py-1 text-center">CONTACT ME</a>
     </div>
 
-    <!-- Main Content Container -->
-    <main class="w-full max-w-7xl mt-8">
-        <!-- Projects Grid Section -->
-        <div id="projects-grid-section" class="projects-section">
-            <h2 class="playfair text-4xl font-bold text-center text-[#8B4513] mb-8 opacity-0 animate-top" style="animation-delay: 0.2s;">My Projects</h2>
-            <!-- 
-                This grid is designed to be responsive. 
-                - On mobile (default), it's a single column (grid-cols-1).
-                - On small screens (sm), it switches to 2 columns (sm:grid-cols-2).
-                - On large screens (lg), it switches to 3 columns (lg:grid-cols-3), preserving the desktop layout.
-            -->
-            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project cards will be injected here by JavaScript -->
+    <main class="w-full max-w-7xl mt-12 z-10 flex-grow mb-16">
+        
+        <div id="projects-grid-section" class="w-full transition-all duration-300">
+            <div class="mb-10 text-center animate-top">
+                <h2 class="playfair text-4xl font-bold text-gray-900 tracking-tight">Engineering Artifacts</h2>
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mt-2">Selected Deep Learning & Software Architecture Implementations</p>
+                <div class="w-12 h-1 bg-[#8B4513] mx-auto mt-4 rounded-full"></div>
             </div>
+            
+            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
         </div>
 
-        <!-- Project Detail Section (initially hidden) -->
-        <div id="project-detail-section" class="projects-section hidden p-4 md:p-8">
-            <!-- Back Button -->
-            <button id="back-button" class="flex items-center text-gray-600 hover:text-[#8B4513] mb-8 transition-colors duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-                Back to Projects
+        <div id="project-detail-section" class="w-full hidden">
+            <button id="back-button" class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-[#8B4513] mb-8 transition-colors duration-200">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Return to Grid View
             </button>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 opacity-0 animate-fade" style="animation-delay: 0.2s;">
-                <!-- Left Column: Visualizer -->
-                <div class="visualizer-container">
-                    <!-- Bars will be generated by JavaScript -->
-                </div>
-                <!-- Right Column: Project Details -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col">
-                    <h2 id="project-title" class="playfair text-4xl font-bold text-gray-800 mb-4"></h2>
-                    <p id="project-description" class="text-gray-600 mb-6 flex-grow"></p>
-                    <div id="project-tags" class="flex flex-wrap gap-2 mb-4">
-                        <!-- Tags will be generated by JavaScript -->
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch animate-fade">
+                <div class="lg:col-span-5 visualizer-container rounded-2xl p-8 flex items-end justify-center gap-3">
                     </div>
-                     <a href="#" class="w-full text-center bg-[#8B4513] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#A0522D] transition-colors duration-200">
-                        Click Here
-                    </a>
+                
+                <div class="lg:col-span-7 glass-card rounded-2xl p-8 md:p-12 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="w-2 h-2 bg-[#8B4513] rounded-full animate-ping"></span>
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-[#8B4513]">System Specifications</span>
+                        </div>
+                        <h2 id="project-title" class="playfair text-4xl font-bold text-gray-900 mb-5 tracking-tight"></h2>
+                        <p id="project-description" class="text-sm md:text-base text-gray-600 leading-relaxed font-medium mb-8"></p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-3">Target Tech Stack Matrix</h4>
+                        <div id="project-tags" class="flex flex-wrap gap-2 mb-8">
+                            </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a id="project-action-btn" href="#" target="_blank" class="inline-flex items-center justify-center bg-[#8B4513] text-white font-semibold text-xs py-3.5 px-8 rounded-xl hover:bg-[#A0522D] shadow-sm transition-all duration-200">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                Launch Repository Deployment
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
+        // High-Quality Portfolio Architectural Repositories
         const projectsData = [
             {
                 id: 'chess-vision',
                 title: 'ChessVision – Puzzle Solver',
-                description: 'A machine learning system to recognize chess puzzles from images and solve them automatically using image-to-FEN conversion and chess engine integration.',
-                tags: ['Python', 'OpenCV', 'TensorFlow', 'Chess Engine'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Website+Redesign'
+                description: 'A custom pipeline combining optimized computer vision frameworks and modern chess calculation engine matrices. Translates pixel imagery snapshots into validated FEN (Forsyth-Edwards Notation) strings through coordinate extraction and geometric rectification grids, automatically outputting structural puzzle solutions.',
+                tags: ['Python', 'OpenCV', 'TensorFlow', 'Chess Engine', 'Image Processing'],
+                repo: 'https://github.com/mujahid'
             },
             {
                 id: 'cube-ai',
                 title: 'CubeAI – Rubik’s Solver',
-                description: 'Developed an ML-powered tool to analyze Rubik’s Cube faces from images and compute optimal solving steps using state recognition and Kociemba’s algorithm.',
-                tags: ['Python', 'OpenCV', 'Deep Learning','Kociemba Algorithm'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Data+Tool'
+                description: 'An artificial intelligence image state utility tracking spatial configurations of 3-dimensional matrices. Resolves chromatic values of user camera inputs across faces, tracks operational state vectors, and translates orientation indices directly into Kociemba algorithms for minimal turn executions.',
+                tags: ['Python', 'OpenCV', 'Deep Learning', 'Kociemba Algorithm', 'Matrix Math'],
+                repo: 'https://github.com/mujahid'
             },
             {
                 id: 'air-cursor',
-                title: 'AirCursor – Finger Tracking Mouse',
-                description: 'An AI-powered vision system that lets users control the mouse pointer with hand gestures, enabling touchless interaction with computers.',
-                tags: ['Python', 'OpenCV', 'MediaPipe'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=E-commerce+App'
+                title: 'AirCursor – Gesture Control',
+                description: 'An architectural vision-tracking program mapping continuous hand topology spaces to standard peripheral actions. Processes relative spatial delta modifications of index and thumb joints over sequential frame processing windows to yield contact-free machine interaction.',
+                tags: ['Python', 'OpenCV', 'MediaPipe', 'Real-time Math', 'UI Integration'],
+                repo: 'https://github.com/mujahid'
             },
             {
                 id: 'finetrack',
-                title: 'FineTrack – College Dues Manager',
-                description: 'A web app to calculate fines per class and generate hall tickets for students. Automates fine aggregation and simplifies ticket printing for administration.',
-                tags: ['HTML', 'CSS', 'JavaScript','MySQL'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Travel+App'
+                title: 'FineTrack – Dues Manager',
+                description: 'An administrative information system orchestrating multi-tenant database records to tracking fine status calculations. Implements ACID-compliant transactional models across individual student identity profiles to compile real-time financial clearance profiles.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'Relational DB'],
+                repo: 'https://github.com/mujahid'
             },
             {
                 id: 'medassist',
                 title: 'MedAssist – Home Care Service',
-                description: 'A mobile platform to connect nursing students with patients for minor home treatments, offering scheduling, booking, and patient record management.',
-                tags: ['Flutter', 'Firebase', 'Node.js'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=Blog+Engine'
+                description: 'A distributed platform layer structuring scheduling parameters for healthcare provision nodes. Employs asymmetric transactional updates across integrated real-time storage clusters to safely track appointment availability maps without latency spikes.',
+                tags: ['Flutter', 'Firebase', 'Node.js', 'NoSQL Architectures', 'API Routing'],
+                repo: 'https://github.com/mujahid'
             },
             {
                 id: 'copywriting-for-saas',
-                title: 'Copywriting for SaaS',
-                description: 'A collection of landing page copy, email campaigns, and marketing materials created for a leading B2B SaaS company.',
-                tags: ['Copywriting', 'SaaS', 'Marketing'],
-                image: 'https://placehold.co/600x400/8B4513/FFFFFF?text=SaaS+Copy'
-            },
+                title: 'Copywriting for SaaS Solutions',
+                description: 'A targeted collection of analytical structural copy deployments optimization matrices designed for high-conversion B2B platform operations. Melds concise communication layouts with specialized performance metrics testing variables.',
+                tags: ['Copywriting', 'SaaS', 'Marketing Optimization', 'Content Architecture'],
+                repo: 'https://github.com/mujahid'
+            }
         ];
 
         const projectsGrid = document.getElementById('projects-grid');
@@ -238,33 +227,41 @@
         const projectTitle = document.getElementById('project-title');
         const projectDescription = document.getElementById('project-description');
         const projectTags = document.getElementById('project-tags');
+        const projectActionBtn = document.getElementById('project-action-btn');
         const visualizerContainer = document.querySelector('.visualizer-container');
 
-        // New elements for mobile menu
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        // Function to render the project cards
+        // Functional Initialization for Showcase Grids
         function renderProjectCards() {
-            projectsGrid.innerHTML = ''; // Clear existing content
+            projectsGrid.innerHTML = '';
             projectsData.forEach((project, index) => {
                 const projectCard = document.createElement('div');
-                const animationClass = index % 2 === 0 ? 'animate-left' : 'animate-right';
-                const delay = (index * 0.2 + 0.6).toFixed(1);
+                const animationDirection = index % 2 === 0 ? 'animate-left' : 'animate-right';
+                const staggeredDelay = (index * 0.15 + 0.3).toFixed(2);
                 
-                projectCard.className = `bg-white rounded-2xl shadow-lg p-8 h-80 flex flex-col justify-center opacity-0 ${animationClass}`;
-                projectCard.style.animationDelay = `${delay}s`;
+                projectCard.className = `glass-card rounded-2xl p-8 min-h-[280px] flex flex-col justify-between opacity-0 ${animationDirection} premium-hover`;
+                projectCard.style.animationDelay = `${staggeredDelay}s`;
                 
+                // Truncated text summary assembly
+                const summaryText = project.description.length > 140 ? project.description.substring(0, 137) + '...' : project.description;
+
                 projectCard.innerHTML = `
-                    <h3 class="text-2xl font-bold text-gray-800 playfair mb-2">${project.title}</h3>
-                    <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
-                    <div class="flex items-center space-x-4">
-                        <button class="view-project-btn text-[#8B4513] font-semibold hover:underline" data-project-id="${project.id}">View Project &rarr;</button>
-                        <a href="https://github.com/mujahid" class="text-gray-600 hover:text-[#8B4513] transition-colors duration-200">
-                            <!-- GitHub SVG Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387 0.599 0.111 0.793-0.261 0.793-0.577 0-0.285-0.01-1.040-0.015-2.040-3.338 0.724-4.042-1.61-4.042-1.61-0.542-1.355-1.326-1.72-1.326-1.72-1.087-0.744 0.084-0.729 0.084-0.729 1.205 0.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.492 0.998 0.108-0.776 0.418-1.305 0.762-1.605-2.665-0.304-5.467-1.334-5.467-5.931 0-1.311 0.469-2.381 1.236-3.221-0.124-0.304-0.537-1.516 0.117-3.176 0 0 1.008-0.322 3.301 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.020 0.005 2.047 0.138 3.006 0.404 2.291-1.552 3.297-1.23 3.297-1.23 0.655 1.660 0.242 2.872 0.118 3.176 0.77 0.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923 0.435 0.372 0.817 1.107 0.817 2.228 0 1.606-0.015 2.897-0.015 3.286 0 0.315 0.192 0.694 0.801 0.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-bold tracking-widest text-[#8B4513] uppercase bg-[#8B4513]/5 px-2.5 py-1 rounded-md">Module ${index + 1}</span>
+                            <span class="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 playfair mb-2 tracking-tight">${project.title}</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed font-medium mb-6">${summaryText}</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-gray-100/80 pt-4 mt-auto">
+                        <button class="view-project-btn text-xs font-bold uppercase tracking-wider text-[#8B4513] hover:text-[#A0522D] inline-flex items-center" data-project-id="${project.id}">
+                            Analyze Details &rarr;
+                        </button>
+                        <a href="${project.repo}" target="_blank" class="text-gray-400 hover:text-[#8B4513] transition-colors duration-200">
+                            <svg class="w-5 h-5 fill-currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.872.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                         </a>
                     </div>
                 `;
@@ -272,63 +269,70 @@
             });
         }
 
-        // Function to show project details
+        // Functional Analysis Mapping on Selected Artifacts
         function showProjectDetails(projectId) {
             const project = projectsData.find(p => p.id === projectId);
             if (!project) return;
 
-            // Hide the projects grid and show the detail section
             projectsGridSection.classList.add('hidden');
             projectDetailSection.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Populate the detail view with the selected project's data
             projectTitle.textContent = project.title;
             projectDescription.textContent = project.description;
+            projectActionBtn.href = project.repo;
             
-            // Generate tags
+            // Build stack labels
             projectTags.innerHTML = '';
             project.tags.forEach(tag => {
                 const tagSpan = document.createElement('span');
-                tagSpan.className = 'bg-[#F0F0F0] text-gray-700 text-sm font-medium px-4 py-2 rounded-full';
+                tagSpan.className = 'bg-[#8B4513]/5 border border-[#8B4513]/10 text-gray-700 text-xs font-semibold px-4 py-2 rounded-xl';
                 tagSpan.textContent = tag;
                 projectTags.appendChild(tagSpan);
             });
 
-            // Generate a data-driven visualizer based on the project tags
+            // Build visual metrics panel matching the theme color spectrum
             visualizerContainer.innerHTML = '';
-            project.tags.forEach(tag => {
-                const bar = document.createElement('div');
-                bar.className = 'bar';
-                // Calculate height based on tag length for a dynamic visualizer
-                const barHeight = 20 + tag.length * 2; // Base height + 2% per character
-                bar.style.height = `${Math.min(100, barHeight)}%`; // Cap at 100%
-                bar.style.flexGrow = '1';
-                bar.style.margin = '0 0.5rem';
+            project.tags.forEach((tag, idx) => {
+                const barWrapper = document.createElement('div');
+                barWrapper.className = 'flex flex-col items-center flex-grow mx-1 h-full justify-end group';
 
-                visualizerContainer.appendChild(bar);
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar w-full';
+                
+                // Algorithmic calculation parameters for varying asset heights
+                const calculatedHeight = 25 + (tag.length * 5.5) + (idx * 4);
+                const finalBoundedHeight = Math.min(100, calculatedHeight);
+                
+                bar.style.height = '0%';
+                barWrapper.appendChild(bar);
+                visualizerContainer.appendChild(barWrapper);
+
+                // Safe runtime animation push
+                setTimeout(() => {
+                    bar.style.height = `${finalBoundedHeight}%`;
+                }, 80 + (idx * 40));
             });
         }
 
-        // Event listener for "View Project" buttons
+        // Universal Application Listeners 
         projectsGrid.addEventListener('click', (e) => {
-            if (e.target.classList.contains('view-project-btn')) {
-                const projectId = e.target.dataset.projectId;
-                showProjectDetails(projectId);
+            const dynamicButton = e.target.closest('.view-project-btn');
+            if (dynamicButton) {
+                const targetId = dynamicButton.dataset.projectId;
+                showProjectDetails(targetId);
             }
         });
 
-        // Event listener for "Back to Projects" button
         backButton.addEventListener('click', () => {
-            projectsGridSection.classList.remove('hidden');
             projectDetailSection.classList.add('hidden');
+            projectsGridSection.classList.remove('hidden');
         });
 
-        // Event listener for the mobile menu button
-        mobileMenuButton.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Initial render of the project cards on page load
         document.addEventListener('DOMContentLoaded', renderProjectCards);
     </script>
 </body>
